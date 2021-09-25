@@ -14,8 +14,15 @@ export default createStore({
     }
   },
   actions: {
+    /**
+     * 
+     * @param {string} commit 
+     */
     async getCharacters({commit}) {
       try {
+        /**
+         * https://rickandmortyapi.com/documentation
+         */
         const response = await fetch('https://rickandmortyapi.com/api/character')
         const data = await response.json()
         commit('setCharacters', data.results)
@@ -24,12 +31,26 @@ export default createStore({
         console.error(error)
       }
     },
-    filterByStatus({commit, state}, status) {
+    /**
+     * @param {string} commit
+     * @param {string} state 
+     * @param {string} status 
+     */
+    filterByStatus({ commit, state }, status) {
+      /**
+       * Get all character
+       * @function filter
+       */
       const filter = state.characters.filter((character) => {
         return character.status.includes(status)
       })
       commit('setCharactersFilter', filter)
     },
+    /**
+     * @param {string} commit
+     * @param {string} state 
+     * @param {string} name 
+     */
     filterByName({commit, state}, name) {
       const formatName = name.toLowerCase()
       const filter = state.characters.filter((character) => {

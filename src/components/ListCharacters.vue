@@ -10,7 +10,7 @@
 
 <script>
 import { computed, onMounted } from 'vue'
-import { useStore } from 'vuex'
+import { useStore }            from 'vuex'
 
 import CardCharacter from '@/components/CardCharacter'
 export default {
@@ -28,18 +28,11 @@ export default {
       store.dispatch('getCharacters')
     })
 
-    return {
-      characters
-    }
+    return { characters }
   }
 }
 </script>
 
 <style lang="scss">
-.characters {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-gap: 3rem;
-  margin: 3rem 0;
-}
+.characters { display: grid; grid-template-columns: repeat(3, 1fr); grid-gap: 3rem; margin: 3rem 0; }
 </style>
